@@ -1,0 +1,8 @@
+{
+  "name": "go-llama-api",
+  "description": "Unofficial Go client for the Meta Llama API: chat completions, models, moderations and uploads, generated from Meta's OpenAPI spec.",
+  "author": { "name": "psyb0t", "url": "https://github.com/psyb0t" },
+  "homepage": "https://github.com/psyb0t/go-llama-api",
+  "license": "MIT",
+  "keywords": ["llama", "meta", "llm", "openapi", "api-client", "go-library"]
+}

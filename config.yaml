@@ -1,0 +1,16 @@
+package: llama
+generate:
+  client: true
+  models: true
+output: client.gen.go
+output-options:
+  resolve-type-name-collisions: true
+  # Temperatures, probabilities and scores are plain `type: number` without a
+  # format, which oapi-codegen maps to float32 by default. Map them to float64
+  # so values keep their full precision.
+  type-mapping:
+    number:
+      default:
+        type: float64
+compatibility:
+  always-prefix-enum-values: true

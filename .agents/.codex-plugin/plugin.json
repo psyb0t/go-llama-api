@@ -1,6 +1,6 @@
 {
   "name": "go-llama-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Unofficial Go client for the Meta Llama API: chat completions, models, moderations and uploads, generated from Meta's OpenAPI spec.",
   "author": { "name": "psyb0t", "url": "https://github.com/psyb0t" },
   "homepage": "https://github.com/psyb0t/go-llama-api",

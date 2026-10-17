@@ -45,6 +45,7 @@ make sec       # gitleaks, govulncheck, semgrep
 - The spec's `servers` entry is `http://api.llama.com` without `/v1`. The real base URL is `https://api.llama.com/v1`, so callers always pass it.
 - The spec requires a security scheme named `Default` that it never defines, so the generated client adds no auth. Auth is always a caller `RequestEditorFn`.
 - Regenerating can rename types when upstream schemas change (the `...Response2` names come from collision resolution). Check the tests and the skill after every `make generate`.
+- `.github/workflows/regen.yml` regenerates the client every day and releases the result. When the checks fail, Claude edits the repository to fix them, but a fix may not touch the paths listed under `fix_protected_paths` in that workflow: the workflows, the Makefile, `AGENTS.md`, `.agents/rules/`, the lint, security and spec download scripts and their configs. A problem that needs a change there fails the run and needs a manual fix.
 
 ## Rules
 

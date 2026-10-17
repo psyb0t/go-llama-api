@@ -84,6 +84,8 @@ make generate
 - `scripts/fetch-spec.sh` reads `openapi_spec_url` from the `.stats.yml` of [meta-llama/llama-api-python](https://github.com/meta-llama/llama-api-python) and downloads that URL to `api/openapi.yaml`. The spec is hosted by Stainless under a URL that changes with every update, so the script looks it up each time.
 - oapi-codegen runs with `config.yaml`. The config maps `number` to `float64`, because the spec gives temperatures and scores no format and oapi-codegen would otherwise use `float32`.
 
+`.github/workflows/regen.yml` does the same every day in CI. When the new spec changes the client, it runs `make lint`, `make test` and `make sec`. If a check fails, Claude edits the code and the checks run again, up to three times, and a review step reads the result. A passing change is committed with a CHANGELOG entry and tagged as the next release: a patch version for fixes and additions, a minor version for breaking changes.
+
 ## Agent integrations
 
 The [skill](.agents/skills/go-llama-api) teaches a coding agent how to use go-llama-api when it writes Go. It works in any agent that reads `.agents/skills/`, and installs natively in the clients below.

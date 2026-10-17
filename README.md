@@ -61,6 +61,8 @@ func main() {
 
 The same code is in `example_test.go`, so `make test` checks that it compiles.
 
+The full API, with the spec's descriptions as doc comments, is in the [Go reference](https://pkg.go.dev/github.com/psyb0t/go-llama-api) and in `go doc github.com/psyb0t/go-llama-api`.
+
 Chat messages are unions. Build one with the `From...` helpers, for example `UserMessage_Content.FromUserMessageContent0("hello")` for plain text and then `Message.FromUserMessage(...)`, which also sets the `role`. Read the reply with `CompletionMessage.Content.AsAssistantMessageContent0()`.
 
 The chat endpoint can also stream server-sent events when `stream` is true. The generated client does not parse event streams; use `CreateChatCompletion` (without `WithResponse`) and read the `*http.Response` body yourself.

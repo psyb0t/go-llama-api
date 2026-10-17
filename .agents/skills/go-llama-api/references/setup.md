@@ -37,7 +37,7 @@ import "github.com/psyb0t/go-llama-api"
 | `GetUploadsUploadIdWithResponse(ctx, uploadID, params)` | `GET /uploads/{upload_id}` |
 | `PostUploadsUploadIdWithBodyWithResponse(ctx, uploadID, params, contentType, body)` | `POST /uploads/{upload_id}` |
 
-Each has a variant without `WithResponse` that returns the raw `*http.Response`, and a `WithBody` variant that takes any `io.Reader`.
+Each has a variant without `WithResponse` that returns the raw `*http.Response`. Operations with a request body also have a `WithBody` variant that takes a content type and any `io.Reader`.
 
 ## Unions
 

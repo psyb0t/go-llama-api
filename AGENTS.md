@@ -9,7 +9,7 @@ Unofficial Go client for the Meta Llama API, generated with oapi-codegen. If you
 1. `scripts/fetch-spec.sh` reads `openapi_spec_url` from the `.stats.yml` of meta-llama/llama-api-python and downloads that spec to `api/openapi.yaml`.
 2. oapi-codegen (`go tool oapi-codegen`) reads `config.yaml` and writes `client.gen.go`.
 
-The spec currently needs no patch step. If a future spec breaks oapi-codegen, add a patch step to `gen.go` that writes a fixed copy under `api/`.
+The spec needs no patch step. If a spec update breaks oapi-codegen, add a patch step to `gen.go` that writes a fixed copy under `api/`.
 
 ## Stack
 

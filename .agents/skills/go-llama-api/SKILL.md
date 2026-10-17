@@ -1,6 +1,7 @@
 ---
 name: go-llama-api
 description: Unofficial Go client for the Meta Llama API, generated from Meta's OpenAPI spec. `llama.NewClientWithResponses("https://api.llama.com/v1", auth)` from `github.com/psyb0t/go-llama-api` gives typed methods for chat completions (`CreateChatCompletionWithResponse`), models (`ListModelsWithResponse`, `RetrieveModelWithResponse`), moderations (`ModerationsWithResponse`) and file uploads (`PostUploadsWithResponse`, `GetUploadsUploadIdWithResponse`, `PostUploadsUploadIdWithResponse`), with responses decoded into `JSON200` and error structs. Auth is a Bearer API key set through a `RequestEditorFn`. Use when Go code needs to call the Llama API or already imports go-llama-api.
+license: MIT
 homepage: https://github.com/psyb0t/go-llama-api
 user-invocable: true
 metadata:
@@ -9,8 +10,6 @@ metadata:
     requires:
       bins:
         - go
-      env:
-        - LLAMA_API_KEY
 permissions:
   filesystem: "Guides edits to the Go source of the current project. The library reads and writes no files."
   shell: "The Go toolchain (`go get`, `go build`, `go test`) to add and compile the dependency."
@@ -39,6 +38,20 @@ For install, the full operation list, unions and streaming, see [references/setu
 - The code is not Go. Use Meta's official SDKs instead.
 - You need a parsed streaming client. The generated client returns the raw `*http.Response` for `stream: true`; it does not parse server-sent events.
 - You are calling an OpenAI-compatible endpoint with an OpenAI SDK; this client follows Meta's native spec.
+
+## Finding endpoints and types
+
+The examples below cover a few calls. Every operation in the spec has a generated method, and the spec's descriptions are on them as Go doc comments. Look names and fields up instead of guessing. After `go get github.com/psyb0t/go-llama-api`, from inside your module:
+
+```bash
+go doc github.com/psyb0t/go-llama-api ClientWithResponsesInterface  # every endpoint method
+go doc github.com/psyb0t/go-llama-api CreateChatCompletionRequest   # one method, params type or model
+go doc -all github.com/psyb0t/go-llama-api                          # the whole package
+```
+
+The same documentation is at https://pkg.go.dev/github.com/psyb0t/go-llama-api.
+
+Method names come from the spec's operation IDs. `<OperationId>WithResponse` takes the context, then the path parameters in order, then `*<OperationId>Params` when the operation has query or header parameters, then the request body when it has one. The `JSON200` field (or `JSON201` and so on, per declared status) holds the decoded body; it is nil for any other status. `POST /uploads/{upload_id}` takes a raw body, so it only has `PostUploadsUploadIdWithBodyWithResponse`.
 
 ## Usage
 

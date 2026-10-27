@@ -13,7 +13,7 @@ The spec needs no patch step. If a spec update breaks oapi-codegen, add a patch 
 
 ## Stack
 
-- Go 1.26.9, one package `llama` at the module root.
+- Go 1.26.10, one package `llama` at the module root.
 - oapi-codegen v2 and golangci-lint as `go tool` dependencies.
 - Runtime: `github.com/oapi-codegen/runtime`.
 

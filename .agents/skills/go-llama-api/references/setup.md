@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- Go 1.26.9 or newer, per the module's `go.mod`.
+- Go 1.26.10 or newer, per the module's `go.mod`.
 - Runtime dependency: `github.com/oapi-codegen/runtime`.
 - A Llama API key, from the API keys page of the Llama developer dashboard, in `LLAMA_API_KEY`.
 
